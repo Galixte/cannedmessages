@@ -1,0 +1,13 @@
+{% if S_CANNEDMESSAGES_LIST %}
+	<dl style="clear: left;">
+		<dt><label for="cannedmessages">{{ lang('CANNEDMESSAGES') }}</label></dt>
+		<dd>
+			<select name="cannedmessages" id="cannedmessages">
+				<option value="" selected="selected">{{ lang('CANNEDMESSAGES') }}</option>
+				{% include '@phpbb_cannedmessages/cannedmessage_list.html' %}
+			</select>
+		</dd>
+	</dl>
+	<script>var u_cannedmessage_selected = '{{ U_CANNEDMESSAGE_SELECTED|e('js') }}';</script>
+{% INCLUDEJS '@phpbb_cannedmessages/js/cannedmessages_posting.js' %}
+{% endif %}

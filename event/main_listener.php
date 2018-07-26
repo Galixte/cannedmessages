@@ -23,9 +23,6 @@ class main_listener implements EventSubscriberInterface
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/** @var \phpbb\user */
-	protected $user;
-
 	/** @var \phpbb\auth\auth */
 	protected $auth;
 
@@ -44,6 +41,7 @@ class main_listener implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return array(
+			'core.modify_mcp_modules_display_option' => 'add_lang_to_mcp',
 			'core.posting_modify_template_vars'	=> 'posting_modify_template_vars',
 			'core.ucp_pm_compose_modify_data'	=> 'posting_modify_template_vars',
 		);
@@ -53,35 +51,43 @@ class main_listener implements EventSubscriberInterface
 	 * Constructor
 	 *
 	 * @param \phpbb\template\template				$template			Template object
-	 * @param \phpbb\user							$user				User object
 	 * @param \phpbb\auth\auth						$auth				Permissions object
 	 * @param \phpbb\cannedmessages\message\manager $manager      		Canned Messages manager object
 	 * @param \phpbb\language\language           	$language     		Language object
 	 * @param \phpbb\controller\helper				$controller_helper	Controller helper object
 	 */
-	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\auth\auth $auth, \phpbb\cannedmessages\message\manager $manager, \phpbb\language\language $language, \phpbb\controller\helper $controller_helper)
+	public function __construct(\phpbb\template\template $template, \phpbb\auth\auth $auth, \phpbb\cannedmessages\message\manager $manager, \phpbb\language\language $language, \phpbb\controller\helper $controller_helper)
 	{
 		$this->template = $template;
-		$this->user = $user;
 		$this->auth = $auth;
-		$auth->acl($this->user->data);
 		$this->manager = $manager;
 		$this->language = $language;
 		$this->controller_helper = $controller_helper;
 	}
 
 	/**
-	 * Adds the canned messages to the posting window when user is a moderator
+	 * Add ACP lang file with log message keys for the MCP logs
 	 *
 	 * @param \phpbb\event\data	$event	Event object
 	 */
-	public function posting_modify_template_vars($event)
+	public function add_lang_to_mcp($event)
+	{
+		if ($event['module']->p_name === 'mcp_logs')
+		{
+			$this->language->add_lang('info_acp_cannedmessages', 'phpbb/cannedmessages');
+		}
+	}
+
+	/**
+	 * Adds the canned messages to the posting window when user is a moderator
+	 */
+	public function posting_modify_template_vars()
 	{
 		if ($this->can_view_cannedmessages())
 		{
 			$this->language->add_lang('posting', 'phpbb/cannedmessages');
 			$this->template->assign_vars(array(
-				'S_CANNEDMESSAGES'			=> $this->manager->get_messages(),
+				'S_CANNEDMESSAGES_LIST'		=> $this->manager->get_messages(),
 				'U_CANNEDMESSAGE_SELECTED'	=> $this->controller_helper->route('cannedmessage_selected', array('data' => 0)),
 			));
 		}
