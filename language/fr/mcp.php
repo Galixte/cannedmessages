@@ -4,8 +4,8 @@
  * Canned Messages. An extension for the phpBB Forum Software package.
  * French translation by Galixte (http://www.galixte.com)
  *
- * @copyright (c) 2017 phpBB Limited <https://www.phpbb.com>
- * @license GNU General Public License, version 2 (GPL-2.0)
+ * @copyright (c) 2018 phpBB Limited <https://www.phpbb.com>
+ * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
 
@@ -45,7 +45,6 @@ $lang = array_merge($lang, array(
 	'CANNEDMESSAGE_NAME'				=> 'Nom de la catégorie / du message',
 	'CANNEDMESSAGE_LIST'				=> 'Liste des catégories / messages conservés',
 	'NO_CANNEDMESSAGES'					=> 'Il n’y a aucun(e) catégorie / message conservé',
-	'NO_CANNEDMESSAGE'					=> 'Aucun(e) catégorie / message conservés n’a été indiqué(e).',
 	'CANNEDMESSAGE_IS_CAT'				=> 'Est une catégorie',
 	'CANNEDMESSAGE_CONTENT'				=> 'Contenu du message',
 	'NO_PARENT'							=> 'Aucun(e)',
@@ -54,7 +53,8 @@ $lang = array_merge($lang, array(
 	'MESSAGE_CONTENT_REQUIRED'			=> 'Il est nécessaire de saisir du texte dans le « Contenu du message » lorsqu’il ne s’agit pas d’une catégorie',
 	'CANNEDMESSAGE_UPDATED'				=> 'La catégorie / le message conservé a été sauvegardé(e) avec succès !',
 	'CANNEDMESSAGE_CREATED'				=> 'La catégorie / le message conservé a été créé(e) avec succès !',
-	'CANNEDMESSAGE_PARENT_NOT_EXIST'	=> 'La catégorie / le message conservé parent(e) n’existe pas.',
+	'CANNEDMESSAGE_INVALID_ITEM'		=> 'Aucun(e) catégorie / message conservés n’a été indiqué(e).',
+	'CANNEDMESSAGE_INVALID_PARENT'		=> 'La catégorie / le message conservé parent(e) n’existe pas.',
 	'CANNEDMESSAGE_PARENT_IS_NOT_CAT'	=> 'Le message conservé parent n’est pas une catégorie.',
 	'CANNEDMESSAGE_HAS_CHILDREN'		=> 'La catégorie de messages conservés possède des sous-catégories et ne peux être modifiée en message. Merci de retirer ses sous-catégories au préalable de la modifier.',
 	'CANNEDMESSAGE_HAS_CHILDREN_DEL'	=> 'La catégorie de messages conservés possède des sous-catégories et ne peux être supprimée. Merci de retirer ses sous-catégories au préalable de la supprimer.',

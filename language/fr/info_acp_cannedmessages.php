@@ -39,6 +39,9 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'MCP_CANNEDMESSAGES_TITLE'		=> 'Messages conservés',
-	'MCP_CANNEDMESSAGES_MANAGE'		=> 'Gestion des catégories & messages',
+	'MCP_CANNEDMESSAGE_ADD_LOG'			=> '<strong>Catégorie / message conservés créé(e)</strong><br />» %s',
+	'MCP_CANNEDMESSAGE_EDIT_LOG'		=> '<strong>Catégorie / message conservés modifié(e)</strong><br />» %s',
+	'MCP_CANNEDMESSAGE_DELETE_LOG'		=> '<strong>Catégorie / message conservés supprimé(e)</strong><br />» %s',
+	'MCP_CANNEDMESSAGE_MOVE_UP_LOG'		=> '<strong>Catégorie / message conservés déplacé(e)</strong> %1$s <strong>au-dessus de</strong> %2$s',
+	'MCP_CANNEDMESSAGE_MOVE_DOWN_LOG'	=> '<strong>Catégorie / message conservés déplacé(e)</strong> %1$s <strong>en dessous de</strong> %2$s',
 ));
